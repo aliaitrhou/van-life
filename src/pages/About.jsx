@@ -3,6 +3,7 @@ const About = () => {
   return (
     <>
       <img src={aboutBg} />
+      <p>Hello World, from vim</p>
     </>
   );
 };
