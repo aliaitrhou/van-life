@@ -31,7 +31,7 @@ function App() {
               </nav>
             </div>
           </header>
-          <main className="mt-24 w-full flex flex-col items-center">
+          <main className="mt-20 sm:mt-24 w-full flex flex-col items-center">
             <div className="max-w-4xl">
               <Routes>
                 <Route path="/" element={<Home />} />
