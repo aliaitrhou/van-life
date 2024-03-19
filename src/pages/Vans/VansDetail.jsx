@@ -23,9 +23,9 @@ const VansDetail = () => {
 
   return (
     <>
-      <div className="mt-16 ">
+      <div style={{ height: "65dvh" }} className="mt-32 ">
         {van ? (
-          <div className="overflow-hidden rounded-lg max-w-4xl flex justify-center ">
+          <div className="overflow-hidden rounded-lg max-w-4xl flex justify-center gap-4 ">
             <div className="mx-6 mt-2 flex flex-col justify-between gap-4">
               <div
                 className={

@@ -45,16 +45,15 @@ const Vans = () => {
   ));
 
   return (
-    <main className="mt-6 w-full flex flex-col items-center">
-      <div>
-        <div className="mb-4">
-          <h1 className="text-2xl font-semibold ">Explore our van options</h1>
-        </div>
-        <div className="max-w-4xl flex flex-wrap justify-center gap-14 ">
-          {vanElements}
-        </div>
+    <>
+      <h1 className="text-2xl font-semibold ">Explore our van options</h1>
+      <div
+        style={{ minHeight: "100dvh" }}
+        className="max-w-4xl py-12 flex flex-wrap justify-center gap-14 "
+      >
+        {vanElements}
       </div>
-    </main>
+    </>
   );
 };
 

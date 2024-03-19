@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <main className="mt-6 w-full flex flex-col items-center">
-      <div className="max-w-4xl">
+    <>
+      <div style={{ height: "78dvh" }}>
         <img className=" w-full bg-cover bg-center" src={bgImg} />
         <div className="relative font-sans px-4 sm:px-4 md:px-0 ">
           <p className="absolute left-4 sm:left-8 -top-36 sm:-top-48 text-white sm:text-4xl text-2xl font-bold">
@@ -30,7 +30,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

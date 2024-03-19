@@ -19,6 +19,12 @@ const Header = () => {
           </Link>
           <div className="flex gap-4">
             <Link
+              to={"/host"}
+              className="hover:underline font-semibold  text-light "
+            >
+              Host
+            </Link>
+            <Link
               to={"/about"}
               className="hover:underline font-semibold  text-light "
             >
