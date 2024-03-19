@@ -53,7 +53,7 @@ createServer({
       description:
         "The Cruiser is a van for those who love to travel in comfort and luxury. With its many windows, spacious interior and ample storage space, the Cruiser offers a beautiful view wherever you go.",
       imageUrl:
-        "https://assets.scrimba.com/advanced-react/react-router/the-cruiser.png",
+        "https://cdn.pixabay.com/photo/2022/07/31/20/32/volkswagen-7356817_1280.jpg",
       type: "luxury",
     });
     server.create("van", {
