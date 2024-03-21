@@ -24,7 +24,7 @@ const Home = () => {
           </p>
 
           <Link to={"/vans"}>
-            <button className="bg-orange-400 w-1/2 sm:w-full px-1 py-2 sm:py-4 rounded-lg mt-8 sm:mt-16 text-black font-bold text-sm sm:text-lg ">
+            <button className="bg-orange-400 w-1/2 sm:w-full px-1 py-2 sm:py-4 rounded-lg mt-8 sm:mt-16 text-white font-bold text-sm sm:text-lg ">
               Find your van
             </button>
           </Link>
