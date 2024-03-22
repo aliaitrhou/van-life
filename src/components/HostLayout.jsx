@@ -1,22 +1,37 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const HostLayout = () => {
+  const activeStyles = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616",
+  };
   return (
     <>
-      <div style={{ height: "77dvh" }} className="w-full ">
+      <div style={{ height: "77dvh" }} className="w-full">
         <nav className="py-4 flex justify-start gap-16">
-          <Link className="hover:underline hover:font-bold" to={"/host"}>
+          <NavLink
+            to={"/host"}
+            end // we use end keyword end={true} to say that we dont want to match this route we the other route is active
+            className=" hover:underline hover:font-bold"
+            style={({ isActive }) => (isActive ? activeStyles : null)}
+          >
             Dashbord
-          </Link>
-          <Link className="hover:underline hover:font-bold" to={"/host/income"}>
-            Income
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            to={"/host/income"}
             className="hover:underline hover:font-bold"
+            style={({ isActive }) => (isActive ? activeStyles : null)}
+          >
+            Income
+          </NavLink>
+          <NavLink
             to={"/host/reviews"}
+            className="hover:underline hover:font-bold"
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Reviews
-          </Link>
+          </NavLink>
         </nav>
 
         <Outlet />

@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Emoji from "../assets/vanEmogiImg.png";
 
 const Header = () => {
+  const activeStyles = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616",
+  };
+
   return (
-    <header className="sticky top-0  bg-orange-100 shadow-md  p-6 sm:py-9 w-full flex justify-center ">
+    <header className="sticky top-0  bg-orange-100 shadow-md  p-6 sm:py-8 w-full flex justify-center ">
       <div className="max-w-4xl w-full">
         <nav className="flex flex-row items-center">
           <Link to={"/"} className="mr-auto">
@@ -18,24 +24,27 @@ const Header = () => {
             </div>
           </Link>
           <div className="flex gap-8">
-            <Link
+            <NavLink
               to={"/host"}
-              className="hover:underline text-light font-bold text-slate-600 hover:text-slate-950 transition duration-700 ease-linear "
+              className="hover:underline hover:font-bold hover:text-slate-950 transition duration-700 ease-linear "
+              style={({ isActive }) => (isActive ? activeStyles : null)}
             >
               Host
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={"/about"}
-              className="hover:underline text-light font-bold text-slate-600 hover:text-slate-950 transition duration-700 ease-linear "
+              className="hover:underline hover:font-bold hover:text-slate-950 transition duration-700 ease-linear "
+              style={({ isActive }) => (isActive ? activeStyles : null)}
             >
               About
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={"/vans"}
-              className="hover:underline text-light font-bold text-slate-600  hover:text-slate-950 transition duration-700ease-linear  "
+              className="hover:underline hover:font-bold hover:text-slate-950 transition duration-700 ease-linear "
+              style={({ isActive }) => (isActive ? activeStyles : null)}
             >
               Vans
-            </Link>
+            </NavLink>
           </div>
         </nav>
       </div>
