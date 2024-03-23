@@ -9,7 +9,6 @@ const Layout = () => {
       <main className="max-w-4xl mt-6 w-full flex flex-col items-center">
         <Outlet />
       </main>
-
       <Footer />
     </>
   );
