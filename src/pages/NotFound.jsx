@@ -4,7 +4,7 @@ const NotFound = () => {
   return (
     <section
       className=" mb-4 w-full flex justify-center items-center"
-      style={{ height: "75dvh" }}
+      style={{ height: "76dvh" }}
     >
       <div className="space-y-8">
         <h1 className="text-center text-transparent bg-clip-text mb-4 text-8xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-200 to-orange-50">

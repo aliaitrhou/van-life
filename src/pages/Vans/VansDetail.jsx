@@ -21,13 +21,8 @@ const VansDetail = () => {
     }
   };
   const location = useLocation();
-  console.log(location);
   const search = location.state?.typeParam || "";
-
-  console.log(search);
-  const type = search.split("=")[1];
-  console.log(type);
-
+  const type = search.split("type=")[2];
   return (
     <section style={{ height: "74dvh" }} className="mt-8">
       <Link
@@ -37,10 +32,10 @@ const VansDetail = () => {
       >
         &#8592;
         <span className="underline text-sm ml-2">
-          Back to {search ? type : "all"} vans
+          Back to {type ? type : "all"} vans
         </span>
       </Link>
-      <div className="mt-8 bg-white p-4 rounded-xl">
+      <div className="mt-8  p-4 rounded-xl">
         {van ? (
           <div className="overflow-hidden rounded-lg max-w-4xl  flex justify-center gap-4 ">
             <div className="  flex flex-col justify-between gap-2">

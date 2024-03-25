@@ -107,7 +107,7 @@ const Vans = () => {
         </button>
         {typeFilter && (
           <button
-            className=" py-2 px-4 rounded font-medium text-sm text-slate-950 underline"
+            className=" py-2 px-4 bg-white rounded font-medium text-sm text-black border underline"
             onClick={() => handleFiltring("type", null)}
           >
             All
