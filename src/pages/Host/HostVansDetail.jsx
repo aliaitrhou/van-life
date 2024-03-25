@@ -62,7 +62,7 @@ const HostVanstDetail = () => {
             </p>
           </div>
         </div>
-        <hr className="h-1 bg-orange-300 border-b" />
+        <div className="h-1 bg-orange-50 "></div>
         <nav className="space-x-8">
           <NavLink
             to="."

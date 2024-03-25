@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 import Vans from "./pages/Vans/Vans";
 import VansDetail from "./pages/Vans/VansDetail";
 import Layout from "./components/Layout";
@@ -36,6 +37,7 @@ function App() {
                 <Route path="photos" element={<HostVanPhotos />} />
               </Route>
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

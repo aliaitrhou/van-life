@@ -15,8 +15,8 @@ const HostVans = () => {
   }
 
   const vansElements = vans.map((van) => (
-    <Link key={van.id} to={`/host/vans/${van.id}`}>
-      <div className="bg-orange-100 border p-4 rounded-lg space-x-8 flex flex-row items-center">
+    <Link key={van.id} to={van.id}>
+      <div className="bg-white hover:bg-orange-100 p-4 rounded-lg space-x-8 flex flex-row items-center">
         <img className="w-36 h-36 rounded-lg" src={van.imageUrl} />
         <div className="space-y-4">
           <h2 className="font-sans text-black text-2xl font-bold">

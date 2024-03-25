@@ -58,7 +58,7 @@ const Vans = () => {
 
   const vanElements = displayVans.map((van) => (
     <div key={van.id} className="border border-orange-300 rounded-lg p-4 h-fit">
-      <Link to={`/vans/${van.id}`}>
+      <Link to={van.id} state={{ typeParam: `?${searchPrams.toString()}` }}>
         <img className="w-96 h-96 rounded-lg" src={van.imageUrl} />
         <div className="mt-4">
           <div className="flex flex-row justify-between items-center ">
