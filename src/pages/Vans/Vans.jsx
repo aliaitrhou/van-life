@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
 
-const Vans = () => {
-  const [vans, setVans] = useState([]);
+export function loader() {
+  return getVans();
+}
+export default function Vans() {
   const [searchPrams, setSearchPrams] = useSearchParams();
-
-  useEffect(() => {
-    fetch("/api/vans")
-      .then((rep) => rep.json())
-      .then((data) => setVans(data.vans));
-  }, []);
+  const vans = useLoaderData();
+  const typeFilter = searchPrams.get("type");
 
   const getTypeStyle = (type) => {
     if (type === "simple") {
@@ -20,6 +18,7 @@ const Vans = () => {
       return "hover:bg-black hover:text-slate-200 ";
     }
   };
+
   const cardTypeUi = (type) => {
     if (type === "simple") {
       return "bg-orange-600 text-slate-200 ";
@@ -30,31 +29,9 @@ const Vans = () => {
     }
   };
 
-  const typeFilter = searchPrams.get("type");
   const displayVans = typeFilter
     ? vans.filter((van) => van.type == typeFilter)
     : vans;
-
-  const handleFiltring = (key, value) => {
-    setSearchPrams((prevParams) => {
-      if (value === null) {
-        prevParams.delete(key);
-      } else {
-        prevParams.set(key, value);
-      }
-      return prevParams;
-    });
-  };
-
-  const selectedBtnUi = (type) => {
-    if (type === "simple") {
-      return "bg-orange-600  ";
-    } else if (type === "luxury") {
-      return "bg-black ";
-    } else {
-      return "bg-green-600  ";
-    }
-  };
 
   const vanElements = displayVans.map((van) => (
     <div key={van.id} className="border border-orange-300 rounded-lg p-4 h-fit">
@@ -80,6 +57,27 @@ const Vans = () => {
       </Link>
     </div>
   ));
+
+  const handleFiltring = (key, value) => {
+    setSearchPrams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  };
+
+  const selectedBtnUi = (type) => {
+    if (type === "simple") {
+      return "bg-orange-600  ";
+    } else if (type === "luxury") {
+      return "bg-black ";
+    } else {
+      return "bg-green-600  ";
+    }
+  };
 
   return (
     <section className="mb-4">
@@ -107,7 +105,7 @@ const Vans = () => {
         </button>
         {typeFilter && (
           <button
-            className=" py-2 px-4 bg-white rounded font-medium text-sm text-black border underline"
+            className=" py-2 px-4 bg-white rounded font-medium text-sm text-black underline"
             onClick={() => handleFiltring("type", null)}
           >
             All
@@ -122,6 +120,4 @@ const Vans = () => {
       </div>
     </section>
   );
-};
-
-export default Vans;
+}

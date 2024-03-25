@@ -7,7 +7,7 @@ import {
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import Vans from "./pages/Vans/Vans";
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import VansDetail from "./pages/Vans/VansDetail";
 import Layout from "./components/Layout";
 import HostLayout from "./components/HostLayout";
@@ -26,7 +26,7 @@ const router = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} />
+      <Route path="vans" element={<Vans />} loader={vansLoader} />
       <Route path="vans/:id" element={<VansDetail />} />
       <Route path="host" element={<HostLayout />}>
         <Route index element={<Dashboard />} />
