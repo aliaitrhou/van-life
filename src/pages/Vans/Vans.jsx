@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Vans = () => {
   const [vans, setVans] = useState([]);
+  const [searchPrams, setSearchPrams] = useSearchParams();
+
   useEffect(() => {
     fetch("/api/vans")
       .then((rep) => rep.json())
@@ -11,16 +13,51 @@ const Vans = () => {
 
   const getTypeStyle = (type) => {
     if (type === "simple") {
-      return "bg-orange-600";
+      return "hover:bg-orange-600 hover:text-slate-200 ";
     } else if (type === "rugged") {
-      return "bg-green-600";
+      return "hover:bg-green-600 hover:text-slate-200 ";
     } else {
-      return "bg-black";
+      return "hover:bg-black hover:text-slate-200 ";
+    }
+  };
+  const cardTypeUi = (type) => {
+    if (type === "simple") {
+      return "bg-orange-600 text-slate-200 ";
+    } else if (type === "rugged") {
+      return "bg-green-600 text-slate-200 ";
+    } else {
+      return "bg-black text-slate-200 ";
     }
   };
 
-  const vanElements = vans.map((van) => (
-    <div key={van.id} className="border border-orange-300 rounded-lg p-4">
+  const typeFilter = searchPrams.get("type");
+  const displayVans = typeFilter
+    ? vans.filter((van) => van.type == typeFilter)
+    : vans;
+
+  const handleFiltring = (key, value) => {
+    setSearchPrams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  };
+
+  const selectedBtnUi = (type) => {
+    if (type === "simple") {
+      return "bg-orange-600  ";
+    } else if (type === "luxury") {
+      return "bg-black ";
+    } else {
+      return "bg-green-600  ";
+    }
+  };
+
+  const vanElements = displayVans.map((van) => (
+    <div key={van.id} className="border border-orange-300 rounded-lg p-4 h-fit">
       <Link to={`/vans/${van.id}`}>
         <img className="w-96 h-96 rounded-lg" src={van.imageUrl} />
         <div className="mt-4">
@@ -33,8 +70,8 @@ const Vans = () => {
           </div>
           <div
             className={
-              "w-1/3 text-center text-white mt-2 rounded-lg font-semibold p-2 " +
-              getTypeStyle(van.type)
+              "w-24 text-center text-white mt-2 rounded-lg font-medium p-2 " +
+              cardTypeUi(van.type)
             }
           >
             {van.type}
@@ -45,15 +82,45 @@ const Vans = () => {
   ));
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold ">Explore our van options</h1>
+    <section className="mb-4">
+      <h1 className="text-4xl font-semibold text-slate-800 ">
+        Explore our van options
+      </h1>
+      <div className="space-x-8 py-4 mt-4">
+        <button
+          onClick={() => handleFiltring("type", "simple")}
+          className={`py-2 px-4  ${typeFilter === "simple" ? null : "bg-orange-100"} rounded text-black  font-medium text-sm ${typeFilter === "simple" ? selectedBtnUi("simple") + " text-slate-200" : getTypeStyle("simple")}`}
+        >
+          Simple
+        </button>
+        <button
+          onClick={() => handleFiltring("type", "luxury")}
+          className={`py-2 px-4  ${typeFilter === "luxury" ? null : "bg-orange-100"} rounded text-black font-medium text-sm ${typeFilter === "luxury" ? selectedBtnUi("luxury") + " text-slate-200" : getTypeStyle("luxury")}`}
+        >
+          Luxury
+        </button>
+        <button
+          onClick={() => handleFiltring("type", "rugged")}
+          className={`py-2 px-4 ${typeFilter === "rugged" ? null : "bg-orange-100"} rounded text-black font-medium text-sm ${typeFilter === "rugged" ? selectedBtnUi("rugged") + " text-slate-200" : getTypeStyle("rugged")}`}
+        >
+          Rugged
+        </button>
+        {typeFilter && (
+          <button
+            className=" py-2 px-4 rounded font-medium text-sm text-slate-950 underline"
+            onClick={() => handleFiltring("type", null)}
+          >
+            All
+          </button>
+        )}
+      </div>
       <div
-        style={{ minHeight: "100dvh" }}
-        className="max-w-4xl py-12 flex flex-wrap justify-center gap-14 "
+        style={{ minHeight: "63dvh" }}
+        className="max-w-4xl py-6  flex flex-wrap justify-center gap-14"
       >
         {vanElements}
       </div>
-    </>
+    </section>
   );
 };
 

@@ -15,7 +15,7 @@ const Dashboard = () => {
   const imgUrlList = vansList.map((van) => van.imageUrl);
 
   return (
-    <section className="mt-8">
+    <section className="mt-6">
       <div className="bg-orange-100 p-8 space-y-4">
         <h2 className="font-bold text-3xl text-black">Welcome!</h2>
         <div className="text-sm font-light flex justify-between">
