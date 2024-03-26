@@ -1,9 +1,10 @@
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import { getVans } from "../../api";
 
-export function loader() {
+export function Loader() {
   return getVans();
 }
+
 export default function Vans() {
   const [searchPrams, setSearchPrams] = useSearchParams();
   const vans = useLoaderData();

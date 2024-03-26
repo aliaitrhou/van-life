@@ -24,7 +24,7 @@ const VansDetail = () => {
   const search = location.state?.typeParam || "";
   const type = search.split("type=")[2];
   return (
-    <section style={{ height: "74dvh" }} className="mt-8">
+    <section style={{ height: "90dvh" }} className="mt-8">
       <Link
         to={`..?${search}`}
         relative="path" //relative mean that we want this.
@@ -35,10 +35,10 @@ const VansDetail = () => {
           Back to {type ? type : "all"} vans
         </span>
       </Link>
-      <div className="mt-8  p-4 rounded-xl">
+      <div className="mt-8  p-4 rounded-xl ">
         {van ? (
-          <div className="overflow-hidden rounded-lg max-w-4xl  flex justify-center gap-4 ">
-            <div className="  flex flex-col justify-between gap-2">
+          <div className="overflow-hidden rounded-lg max-w-4xl  flex flex-col justify-center gap-4 ">
+            <div className="order-2 space-y-4  flex flex-col justify-between gap-2">
               <div
                 className={
                   "w-1/4 text-center text-white rounded-lg font-light p-2 " +
@@ -62,7 +62,7 @@ const VansDetail = () => {
                 </button>
               </Link>
             </div>
-            <img className="w-1/2 h-1/2 rounded-lg " src={van.imageUrl} />
+            <img className="w-2/3 h-96 rounded-lg " src={van.imageUrl} />
           </div>
         ) : (
           <h1 className="text-4xl">Loading...</h1>
