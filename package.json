@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-firebase/auth": "^0.2.10",
+    "firebase": "^10.9.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "miragejs": "^0.1.48",

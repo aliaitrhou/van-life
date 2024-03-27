@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import Emoji from "../assets/vanEmogiImg.png";
+import Icon from "../assets/userIcon.png";
 
 const Header = () => {
   const activeStyles = {
@@ -44,6 +45,13 @@ const Header = () => {
               style={({ isActive }) => (isActive ? activeStyles : null)}
             >
               Vans
+            </NavLink>
+            <NavLink
+              to={"/login"}
+              className="hover:underline hover:font-bold hover:text-slate-950 transition duration-700 ease-linear "
+              style={({ isActive }) => (isActive ? activeStyles : null)}
+            >
+              <img src={Icon} />
             </NavLink>
           </div>
         </nav>

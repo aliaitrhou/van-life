@@ -20,6 +20,8 @@ import HostVansDetail from "./pages/Host/HostVansDetail";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import "./server";
 
 const router = createBrowserRouter(
@@ -27,6 +29,8 @@ const router = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="login" element={<Login />} />,
+      <Route path="signup" element={<SignUp />} />,
       <Route
         path="vans"
         element={<Vans />}
